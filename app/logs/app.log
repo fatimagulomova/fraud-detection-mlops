@@ -1,0 +1,333 @@
+2026-05-16 21:48:28,891 - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2026-05-16 21:56:31,902 - INFO - Received file: fraud_synthetic.csv
+2026-05-16 21:56:56,628 - INFO - Received file: fraud_synthetic.csv
+2026-05-16 21:56:57,266 - INFO - Received file: fraud_synthetic.csv
+2026-05-16 21:56:57,459 - INFO - Received file: fraud_synthetic.csv
+2026-05-16 21:56:57,659 - INFO - Received file: fraud_synthetic.csv
+2026-05-16 21:57:40,770 - INFO - Received file: fraud_synthetic.csv
+2026-05-16 21:58:18,031 - INFO - Received file: fraud_synthetic.csv
+2026-05-16 22:04:33,536 - INFO - Received file: fraud_synthetic.csv
+2026-05-16 22:06:11,442 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 14:36:09,847 - INFO - Received file: month_05.csv
+2026-05-25 14:40:09,590 - INFO - Received file: month_03.csv
+2026-05-25 14:42:36,621 - INFO - Received file: month_06.csv
+2026-05-25 14:42:36,639 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 61, in predict
+    confidence_score, is_fraud = make_prediction(model=model, data=df)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\Fraud Detection - Project\app\model\model.py", line 90, in make_prediction
+    confidence_score = model.predict_proba(data_encoded)[:, 1]
+                       ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\ensemble\_forest.py", line 945, in predict_proba
+    X = self._validate_X_predict(X)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\ensemble\_forest.py", line 637, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\validation.py", line 2877, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\validation.py", line 2729, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- month
+
+2026-05-25 14:50:44,327 - INFO - Received file: month_06.csv
+2026-05-25 14:50:44,345 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 61, in predict
+    confidence_score, is_fraud = make_prediction(model=model, data=df)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\Fraud Detection - Project\app\model\model.py", line 88, in make_prediction
+    confidence_score = model.predict_proba(data_encoded)[:, 1]
+                       ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\ensemble\_forest.py", line 945, in predict_proba
+    X = self._validate_X_predict(X)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\ensemble\_forest.py", line 637, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\validation.py", line 2877, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\validation.py", line 2729, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- month
+
+2026-05-25 14:50:49,017 - INFO - Received file: month_06.csv
+2026-05-25 14:50:49,036 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 61, in predict
+    confidence_score, is_fraud = make_prediction(model=model, data=df)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\Fraud Detection - Project\app\model\model.py", line 88, in make_prediction
+    confidence_score = model.predict_proba(data_encoded)[:, 1]
+                       ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\ensemble\_forest.py", line 945, in predict_proba
+    X = self._validate_X_predict(X)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\ensemble\_forest.py", line 637, in _validate_X_predict
+    X = validate_data(
+        self,
+    ...<4 lines>...
+        ensure_all_finite=ensure_all_finite,
+    )
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\validation.py", line 2877, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\validation.py", line 2729, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- month
+
+2026-05-25 14:51:14,408 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 14:51:14,448 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 62, in predict
+    return {"is_fraud": is_fraud.to_list(), "confidence": confidence_score.to_list()}
+                        ^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6318, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'to_list'. Did you mean: 'to_dict'?
+2026-05-25 14:53:19,506 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 14:53:19,548 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 62, in predict
+    return {"is_fraud": is_fraud.tolist(), "confidence": confidence_score.tolist()}
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6318, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'tolist'
+2026-05-25 14:53:23,952 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 14:53:23,992 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 62, in predict
+    return {"is_fraud": is_fraud.tolist(), "confidence": confidence_score.tolist()}
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6318, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'tolist'
+2026-05-25 14:53:24,679 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 14:53:24,718 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 62, in predict
+    return {"is_fraud": is_fraud.tolist(), "confidence": confidence_score.tolist()}
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6318, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'tolist'
+2026-05-25 14:55:26,304 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 14:55:26,350 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 62, in predict
+    return {"is_fraud": is_fraud.values.tolist(), "confidence": confidence_score.values.tolist()}
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'values'
+2026-05-25 18:29:21,979 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:29:22,037 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'confidence_score'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 62, in predict
+    return {"is_fraud": data['is_fraud'].tolist(), "confidence": data['confidence_score'].tolist()}
+                                                                 ~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'confidence_score'
+2026-05-25 18:29:34,370 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:29:34,411 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'confidence_score'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 62, in predict
+    return {"is_fraud": data['is_fraud'].tolist(), "confidence": data['confidence_score'].tolist()}
+                                                                 ~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'confidence_score'
+2026-05-25 18:29:37,572 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:29:37,619 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'confidence_score'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 62, in predict
+    return {"is_fraud": data['is_fraud'].tolist(), "confidence": data['confidence_score'].tolist()}
+                                                                 ~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'confidence_score'
+2026-05-25 18:30:15,622 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:30:20,226 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:30:20,944 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:30:21,127 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:30:21,399 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:38:51,125 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:40:22,375 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:54:01,261 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:54:05,354 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:55:00,445 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:57:36,840 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 18:59:22,728 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 19:00:29,896 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 19:02:24,377 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 19:02:25,194 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 19:02:25,419 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 19:02:25,609 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 19:02:25,863 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 19:13:19,924 - INFO - Received file: fraud_synthetic.csv
+2026-05-25 19:17:29,917 - INFO - Received file: month_03.csv
+2026-05-29 13:42:00,402 - INFO - Received file: month_06.csv
+2026-05-29 19:33:38,726 - INFO - Received file: month_08.csv
+2026-05-29 19:36:56,977 - INFO - Received file: month_05.csv
+2026-05-29 19:42:36,584 - INFO - Received file: month_02.csv
+2026-05-29 19:44:07,446 - INFO - Received file: month_03.csv
+2026-05-29 19:49:17,767 - INFO - Received file: month_12.csv
+2026-05-30 12:26:16,067 - INFO - Received file: month_07.csv
+2026-05-30 12:26:16,085 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 87, in predict
+    data = make_prediction(model=data_list, data=df)
+TypeError: make_prediction() got an unexpected keyword argument 'model'. Did you mean 'models'?
+2026-05-30 12:27:03,858 - INFO - Received file: month_07.csv
+2026-05-30 12:27:04,064 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'is_fraud'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 90, in predict
+    mlflow.log_metric("fraud_rate", data['is_fraud'].mean())
+                                    ~~~~^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'is_fraud'
+2026-05-30 12:31:06,011 - INFO - Received file: month_04.csv
+2026-05-30 12:31:06,206 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'is_fraud'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 90, in predict
+    mlflow.log_metric("fraud_rate", data['is_fraud'].mean())
+                                    ~~~~^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'is_fraud'
+2026-05-30 12:31:15,264 - INFO - Received file: month_04.csv
+2026-05-30 12:31:15,341 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'is_fraud'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 90, in predict
+    mlflow.log_metric("fraud_rate", data['is_fraud'].mean())
+                                    ~~~~^^^^^^^^^^^^
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'is_fraud'
+2026-05-30 12:44:46,276 - INFO - Received file: month_07.csv
+2026-05-30 12:44:46,333 - ERROR - Prediction failed
+Traceback (most recent call last):
+  File "C:\Users\fatim\Fraud Detection - Project\app\main.py", line 87, in predict
+    data = make_prediction(models=data_list, data=df)
+  File "C:\Users\fatim\Fraud Detection - Project\app\model\model.py", line 121, in make_prediction
+    result = pd.DataFrame({
+        'is_fraud': (avg_score >= 0.6).astype(int),
+        'fraud_probability': avg_score
+    })
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\internals\construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\internals\construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\fatim\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\internals\construction.py", line 667, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+2026-05-30 12:51:25,577 - INFO - Received file: month_08.csv
+2026-05-30 12:52:22,606 - INFO - Received file: month_12.csv
+2026-05-30 14:01:59,739 - INFO - Received file: month_05.csv

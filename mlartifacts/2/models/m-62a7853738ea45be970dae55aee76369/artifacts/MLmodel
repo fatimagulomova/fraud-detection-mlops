@@ -1,0 +1,44 @@
+artifact_path: mlflow-artifacts:/2/models/m-62a7853738ea45be970dae55aee76369/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.5
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.12.0
+model_id: m-62a7853738ea45be970dae55aee76369
+model_size_bytes: 134232
+model_uuid: m-62a7853738ea45be970dae55aee76369
+prompts: null
+run_id: baf340c3a08e45189a647e020bd55ae0
+signature:
+  inputs: '[{"type": "double", "name": "amount", "required": true}, {"type": "long",
+    "name": "hour", "required": true}, {"type": "double", "name": "device_risk_score",
+    "required": true}, {"type": "double", "name": "ip_risk_score", "required": true},
+    {"type": "boolean", "name": "transaction_type_ATM", "required": true}, {"type":
+    "boolean", "name": "transaction_type_Online", "required": true}, {"type": "boolean",
+    "name": "transaction_type_POS", "required": true}, {"type": "boolean", "name":
+    "transaction_type_QR", "required": true}, {"type": "boolean", "name": "merchant_category_Clothing",
+    "required": true}, {"type": "boolean", "name": "merchant_category_Electronics",
+    "required": true}, {"type": "boolean", "name": "merchant_category_Food", "required":
+    true}, {"type": "boolean", "name": "merchant_category_Grocery", "required": true},
+    {"type": "boolean", "name": "merchant_category_Travel", "required": true}, {"type":
+    "boolean", "name": "country_DE", "required": true}, {"type": "boolean", "name":
+    "country_FR", "required": true}, {"type": "boolean", "name": "country_NG", "required":
+    true}, {"type": "boolean", "name": "country_TR", "required": true}, {"type": "boolean",
+    "name": "country_UK", "required": true}, {"type": "boolean", "name": "country_US",
+    "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-05-29 14:46:41.846223'
