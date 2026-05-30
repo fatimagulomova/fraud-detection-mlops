@@ -62,7 +62,7 @@ jobs:
       # ── 6. Run training on the monthly data file ─────────────────────
       - name: Run training
         env:
-          MLFLOW_TRACKING_URI: "mlruns"   # ← change this line
+          MLFLOW_TRACKING_URI: "mlruns"   
           MONTH_FILE: ${{ steps.drift.outputs.month_file }}
         run: |
           python train.py --data "$MONTH_FILE"
