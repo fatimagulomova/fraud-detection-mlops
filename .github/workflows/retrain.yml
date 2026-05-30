@@ -75,3 +75,10 @@ jobs:
           git add app/model/*.pkl
           git diff --staged --quiet || git commit -m "retrain: month ${{ steps.set_month.outputs.month }} - $(date +'%Y-%m-%d')"
           git push
+
+      # ── 8. Reload models in running API ──────────────────────────────
+      - name: Reload API models
+        run: |
+          curl -X POST "http://your-api-url/reload" \
+            -H "X-API-Key: ${{ secrets.API_KEY }}"
+        continue-on-error: true  # don't fail pipeline if API is not running

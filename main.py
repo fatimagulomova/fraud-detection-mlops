@@ -172,3 +172,30 @@ async def predict_instance(features: Input):
         logging.exception("Instance prediction failed")
         raise HTTPException(status_code=500, detail=str(e))
 
+
+@app.post("/reload", dependencies=[Depends(verify_api_key)])
+async def reload_models():
+    global model_list
+    try:
+        new_models = []
+        for file_path in glob.glob("app/model/*.pkl"):
+            with open(file_path, "rb") as f:
+                new_models.append(pickle.load(f))
+
+        if not new_models:
+            raise HTTPException(status_code=404, detail="No model files found in app/model/")
+
+        model_list = new_models
+        logging.info(f"Models reloaded successfully. {len(model_list)} models loaded.")
+
+        return {
+            "status": "success",
+            "models_loaded": len(model_list),
+            "message": "Models reloaded from disk successfully"
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logging.exception("Model reload failed")
+        raise HTTPException(status_code=500, detail=str(e))
