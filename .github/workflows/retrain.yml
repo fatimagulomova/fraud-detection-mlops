@@ -45,6 +45,7 @@ jobs:
             echo "month=${{ github.event.inputs.month }}" >> $GITHUB_OUTPUT
           fi
 
+
       # ── 5. Generate monthly data + detect drift ──────────────────────
       - name: Generate monthly data and detect drift
         id: drift
@@ -58,7 +59,7 @@ jobs:
       # ── 6. Run training on the monthly data file ─────────────────────
       - name: Run training
         env:
-          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+          MLFLOW_TRACKING_URI: "mlruns"   # ← change this line
           MONTH_FILE: ${{ steps.drift.outputs.month_file }}
         run: |
           python train.py --data "$MONTH_FILE"

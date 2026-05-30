@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
+import os
 import mlflow
 
 # Machine Learning
@@ -11,9 +12,8 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 __version__ = "0.1.0"
 
-mlflow.set_tracking_uri('http://127.0.0.1:5000/')
+mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000/"))
 mlflow.set_experiment('Fraud Detection - Training')
-
 
 # =================================================================== DATA PREPROCESSING ===================================================================
 
