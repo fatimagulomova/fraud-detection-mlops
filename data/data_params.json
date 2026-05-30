@@ -1,0 +1,35 @@
+{
+  "columns": {
+    "transaction_id": {
+      "sdtype": "id"
+    },
+    "user_id": {
+      "sdtype": "id"
+    },
+    "amount": {
+      "sdtype": "numerical"
+    },
+    "transaction_type": {
+      "sdtype": "categorical"
+    },
+    "merchant_category": {
+      "sdtype": "categorical"
+    },
+    "country": {
+      "sdtype": "categorical"
+    },
+    "hour": {
+      "sdtype": "numerical"
+    },
+    "device_risk_score": {
+      "sdtype": "numerical"
+    },
+    "ip_risk_score": {
+      "sdtype": "numerical"
+    },
+    "is_fraud": {
+      "sdtype": "categorical"
+    }
+  },
+  "METADATA_SPEC_VERSION": "METADATA_SPEC_VERSION"
+}
