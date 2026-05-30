@@ -223,4 +223,12 @@ mlartifacts
 =======
 >>>>>>> a9288a459f964d7c42925433a7afcdc95489a2af
 mlflow.db
-*.pkl
+# Streamlit
+.streamlit/secrets.toml
+
+# Project specific
+__pycache__
+app/logs/
+mlartifacts/
+mlflow.db
+mlruns/
