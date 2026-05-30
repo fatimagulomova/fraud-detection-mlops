@@ -31,7 +31,7 @@ synthesizer = GaussianCopulaSynthesizer(metadata=metadata)
 synthesizer.fit(df)
 
 synthetic_df = synthesizer.sample(num_rows=len(df))
-synthetic_df.to_csv("app/data/fraud_synthetic.csv", index=False)
+synthetic_df.to_csv("data/fraud_synthetic.csv", index=False)
 
 # ===========================================================================DRIFT GENERATION======================================================================
 
