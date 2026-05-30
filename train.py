@@ -2,7 +2,7 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
-from model.model import preprocessing_data, train_models_with_mlflow, classification_report_vis, feature_importance_vis
+from app.model.model import preprocessing_data, train_models_with_mlflow, classification_report_vis, feature_importance_vis
 
 df = pd.read_csv("app/data/fraud_dataset.csv")
 X_train, X_test, y_train, y_test = preprocessing_data(df=df)

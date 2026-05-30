@@ -1,0 +1,73 @@
+name: Monthly Retrain Pipeline
+
+on:
+  # Runs automatically on the 1st of every month at midnight
+  schedule:
+    - cron: '0 0 1 * *'
+
+  # Allows manual trigger from GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Month number to train on (1-12)'
+        required: true
+        default: '1'
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout code ────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # ── 2. Set up Python ────────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # ── 3. Install dependencies ─────────────────────────────────────
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # ── 4. Determine which month to use ─────────────────────────────
+      # If scheduled: derive month from current date
+      # If manual: use the input month number
+      - name: Set month number
+        id: set_month
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            MONTH=$(date +%m | sed 's/^0*//')
+            echo "month=$MONTH" >> $GITHUB_OUTPUT
+          else
+            echo "month=${{ github.event.inputs.month }}" >> $GITHUB_OUTPUT
+          fi
+
+      # ── 5. Generate monthly data + detect drift ──────────────────────
+      - name: Generate monthly data and detect drift
+        id: drift
+        run: |
+          python generate_data.py
+          MONTH=${{ steps.set_month.outputs.month }}
+          MONTH_FILE=$(printf "data/monthly/month_%02d.csv" $MONTH)
+          echo "month_file=$MONTH_FILE" >> $GITHUB_OUTPUT
+          echo "Using data file: $MONTH_FILE"
+
+      # ── 6. Run training on the monthly data file ─────────────────────
+      - name: Run training
+        env:
+          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+          MONTH_FILE: ${{ steps.drift.outputs.month_file }}
+        run: |
+          python train.py --data "$MONTH_FILE"
+
+      # ── 7. Commit updated .pkl model files back to repo ──────────────
+      - name: Commit new model files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add app/model/*.pkl
+          git diff --staged --quiet || git commit -m "retrain: month ${{ steps.set_month.outputs.month }} - $(date +'%Y-%m-%d')"
+          git push
