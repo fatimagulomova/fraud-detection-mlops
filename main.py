@@ -67,15 +67,20 @@ class PredictionOut(BaseModel):
 
 # ============================================================================================== LOAD MODELS ==========================================================================
  
+# Load only your three specific models
+MODEL_NAMES = [
+    "app/model/logistic_regression.pkl",
+    "app/model/random_forest.pkl",
+    "app/model/gradient_boosting_classifier.pkl"
+]
+
 model_list = []
-for file_path in glob.glob("app/model/*.pkl"):
-    with open(file_path, "rb") as f:
-        model_list.append(pickle.load(f))
-
-# If no models found
-if not model_list:
-    raise RuntimeError("No models found in app/model/. Train and save models before starting the server.")
-
+for file_path in MODEL_NAMES:
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as f:
+            model_list.append(pickle.load(f))
+    else:
+        logging.warning(f"Model file not found: {file_path}")
 
 # ================================================================================================= APP ===============================================================================
 

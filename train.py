@@ -5,8 +5,8 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 
-# FIX: ensure app module is importable regardless of where script is run from
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from app.model.model import (
     preprocessing_data,
     train_models_with_mlflow,
@@ -21,7 +21,7 @@ parser.add_argument(
     "--data",
     type=str,
     # FIX: default points to base dataset if no monthly file is specified
-    default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "app", "data", "fraud_dataset.csv"),
+    default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "fraud_dataset.csv"),
     help="Path to the training CSV file"
 )
 args = parser.parse_args()
@@ -88,10 +88,6 @@ y_preds, y_probas = train_models_with_mlflow(
 print("Training complete.")
 
 # ==================== EVALUATION ====================
-
-# FIX: use matplotlib backend that works in headless GitHub Actions (no display)
-import matplotlib
-matplotlib.use('Agg')
 
 for y_pred, y_proba in zip(y_preds, y_probas):
     classification_report_vis(y_test=y_test, y_pred=y_pred)

@@ -42,7 +42,6 @@ def train_models_with_mlflow(models, X_train, X_test, y_train, y_test):
         params = element[1]
         model = element[2]
 
-        # FIX: apply params to model before fitting
         model.set_params(**params)
 
         with mlflow.start_run(run_name=model_name):
@@ -67,23 +66,20 @@ def train_models_with_mlflow(models, X_train, X_test, y_train, y_test):
                 model_type="classifier",
             )
 
-            # FIX: log_params takes a dict, not **kwargs
             mlflow.log_params(params)
             mlflow.sklearn.log_model(model, model_name)
 
-            # FIX: filename uses model name lowercased with spaces replaced
             safe_name = model_name.lower().replace(" ", "_")
             with open(f'app/model/{safe_name}.pkl', 'wb') as file:
                 pickle.dump(model, file)
 
-    # FIX: return is outside the loop
     return y_preds, y_probas
 
 
 # ======================================================================= EVALUATION VISUALIZATIONS ======================================================
 
 def classification_report_vis(y_test, y_pred):
-    # FIX: actually print the classification report the function name promises
+    
     print(classification_report(y_test, y_pred))
 
     cm = confusion_matrix(y_test, y_pred)
@@ -95,7 +91,7 @@ def classification_report_vis(y_test, y_pred):
 
 
 def feature_importance_vis(model, X):
-    # FIX: guard — LogisticRegression has no feature_importances_
+    
     if not hasattr(model, 'feature_importances_'):
         print(f"{type(model).__name__} does not support feature_importances_, skipping.")
         return
@@ -108,7 +104,7 @@ def feature_importance_vis(model, X):
 
     plt.figure(figsize=(20, 9))
     # FIX: use y='feature' instead of hue='feature' for proper bar chart
-    sns.barplot(x='importance', y='feature', data=feat_df, palette='viridis')
+    sns.barplot(x='importance', y='feature', hue='feature', data=feat_df, palette='viridis', legend=False)
     plt.title("Feature Importance")
     plt.show()
 
