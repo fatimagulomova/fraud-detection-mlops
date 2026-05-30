@@ -16,11 +16,14 @@ on:
 jobs:
   retrain:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      # ── 1. Checkout code ────────────────────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # ── 2. Set up Python ────────────────────────────────────────────
       - name: Set up Python
