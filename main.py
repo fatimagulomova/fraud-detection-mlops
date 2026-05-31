@@ -131,7 +131,6 @@ async def predict(file: UploadFile = File(...)):
             with mlflow.start_run(run_name="prediction_batch"):
                 mlflow.log_metric("fraud_rate", float(result['is_fraud'].mean()))
                 mlflow.log_metric("batch_size", int(len(result)))
-                # FIX: log amount from original df before encoding drops it
                 mlflow.log_metric("mean_amount", float(df['amount'].mean()))
 
         except Exception as mlflow_err:
