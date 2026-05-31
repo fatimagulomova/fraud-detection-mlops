@@ -110,13 +110,12 @@ def feature_importance_vis(model, X):
 
 
 def visualize_predictions(data):
-    # FIX: guard for missing 'amount' column (dropped during encoding)
     if 'amount' not in data.columns:
         print("Column 'amount' not available for visualization.")
         return
 
     plt.figure(figsize=(10, 5))
-    # FIX: cast is_fraud to str so seaborn treats it as categorical
+
     sns.barplot(x=data.index, y=data['amount'], hue=data['is_fraud'].astype(str), dodge=False)
     plt.title("Predicted Fraud vs Legit Transactions")
     plt.xlabel("Transaction Index")
@@ -129,14 +128,12 @@ def visualize_predictions(data):
 def make_prediction(models, data: pd.DataFrame):
     data = data.copy()
 
-    # FIX: drop columns once before the loop (not inside it)
     cols_to_drop = [c for c in ['transaction_id', 'user_id', 'month', 'is_fraud'] if c in data.columns]
     data = data.drop(columns=cols_to_drop)
 
     cat_cols = data.select_dtypes(include=['object', 'category']).columns.tolist()
     data_encoded = pd.get_dummies(data, columns=cat_cols)
 
-    # FIX: accumulate scores separately so reindex doesn't overwrite predictions
     all_scores = []
 
     for model in models:

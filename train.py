@@ -14,7 +14,7 @@ from app.model.model import (
     feature_importance_vis
 )
 
-# ==================== ARGUMENT PARSING ====================
+# ======================================================================== ARGUMENT PARSING ================================================================
 
 parser = argparse.ArgumentParser(description="Train fraud detection models")
 parser.add_argument(
@@ -26,9 +26,8 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-# ==================== LOAD DATA ====================
+# ======================================================== LOAD DATA =======================================================================================
 
-# FIX: resolve path relative to script location, not working directory
 data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), args.data) if not os.path.isabs(args.data) else args.data
 
 if not os.path.exists(data_path):
@@ -38,11 +37,11 @@ print(f"Loading data from: {data_path}")
 df = pd.read_csv(data_path)
 print(f"Data loaded: {len(df)} rows")
 
-# ==================== PREPROCESSING ====================
+# ========================================================= PREPROCESSING =============================================================================================
 
 X_train, X_test, y_train, y_test = preprocessing_data(df=df)
 
-# ==================== MODELS ====================
+# ============================================================ MODELS ======================================================================================
 
 models = [
     (
@@ -75,7 +74,7 @@ models = [
     ),
 ]
 
-# ==================== TRAINING ====================
+# =================================================================================== TRAINING ======================================================================
 
 print("Starting training...")
 y_preds, y_probas = train_models_with_mlflow(
@@ -87,7 +86,7 @@ y_preds, y_probas = train_models_with_mlflow(
 )
 print("Training complete.")
 
-# ==================== EVALUATION ====================
+# =================================================================================== EVALUATION ========================================================================
 
 for y_pred, y_proba in zip(y_preds, y_probas):
     classification_report_vis(y_test=y_test, y_pred=y_pred)
