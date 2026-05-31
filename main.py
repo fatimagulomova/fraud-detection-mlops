@@ -49,7 +49,6 @@ class Input(BaseModel):
     Hour: int = Field(..., description="The current time")
     Device_risk_score: float = Field(..., description="Your Device risk score")
     Ip_risk_score: float = Field(..., description="Your IP risk score")
-    # FIX: use str instead of object — object is not a valid Pydantic type
     Transaction_type: str = Field(..., description="Choose the Transaction type: Online, QR, ATM, POS")
     Merchant_category: str = Field(..., description="On what you spend money: Clothing, Electronics, Food, Grocery, Travel")
     Country: str = Field(..., description="Your country: UK, US, DE, FR, NG, TR")
