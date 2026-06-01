@@ -15,7 +15,7 @@ from app.model.model import (
     feature_importance_vis
 )
 
-mlflow.set_tracking_uri('http://localhost:5000') 
+# mlflow.set_tracking_uri('http://localhost:5000') 
 mlflow.set_experiment('Fraud Detection - Training')
 
 # ======================================================================== ARGUMENT PARSING ================================================================
