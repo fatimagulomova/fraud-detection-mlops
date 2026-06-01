@@ -36,7 +36,7 @@ async def verify_api_key(api_key: str = Security(api_key_header)):
         )
     return api_key
 
-mlflow.set_tracking_uri('http://127.0.0.1:5000/')
+mlflow.set_tracking_uri('http://localhost:5000')
 mlflow.set_experiment('Fraud Detection - Production')
 
 

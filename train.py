@@ -50,7 +50,8 @@ models = [
             "class_weight": None,
             "random_state": 42,
             "solver": "lbfgs",
-            "max_iter": 100
+            "class_weight": {0: 1, 1: 10},
+            "max_iter": 1000
         },
         LogisticRegression(),
     ),
@@ -58,7 +59,8 @@ models = [
         "Random Forest",
         {
             "n_estimators": 100,
-            "random_state": 42
+            "random_state": 42,
+            "class_weight": 'balanced_subsample',
         },
         RandomForestClassifier(),
     ),

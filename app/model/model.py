@@ -12,7 +12,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 __version__ = "0.1.0"
 
-mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000/"))
+mlflow.set_tracking_uri('http://localhost:5000') 
 mlflow.set_experiment('Fraud Detection - Training')
 
 # =================================================================== DATA PREPROCESSING ===================================================================
@@ -67,7 +67,7 @@ def train_models_with_mlflow(models, X_train, X_test, y_train, y_test):
             )
 
             mlflow.log_params(params)
-            mlflow.sklearn.log_model(model, model_name)
+            mlflow.sklearn.log_model(model, name=model_name)
 
             safe_name = model_name.lower().replace(" ", "_")
             with open(f'app/model/{safe_name}.pkl', 'wb') as file:
