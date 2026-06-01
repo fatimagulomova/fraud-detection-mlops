@@ -12,9 +12,6 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 __version__ = "0.1.0"
 
-mlflow.set_tracking_uri('http://localhost:5000') 
-mlflow.set_experiment('Fraud Detection - Training')
-
 # =================================================================== DATA PREPROCESSING ===================================================================
 
 def preprocessing_data(df):
@@ -63,7 +60,7 @@ def train_models_with_mlflow(models, X_train, X_test, y_train, y_test):
                 data=eval_dataset,
                 predictions="prediction",
                 targets="target",
-                model_type="classifier",
+                model_type='classifier'
             )
 
             mlflow.log_params(params)
@@ -78,7 +75,7 @@ def train_models_with_mlflow(models, X_train, X_test, y_train, y_test):
 
 # ======================================================================= EVALUATION VISUALIZATIONS ======================================================
 
-def classification_report_vis(y_test, y_pred):
+def classification_report_vis(y_test, y_pred, model_name):
     
     print(classification_report(y_test, y_pred))
 
@@ -87,10 +84,10 @@ def classification_report_vis(y_test, y_pred):
     plt.title("Confusion Matrix")
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
-    plt.show()
+    plt.savefig(f'app/model/evaluation/{model_name}_classification_report.png')
 
 
-def feature_importance_vis(model, X):
+def feature_importance_vis(model, X, model_name):
     
     if not hasattr(model, 'feature_importances_'):
         print(f"{type(model).__name__} does not support feature_importances_, skipping.")
@@ -103,13 +100,12 @@ def feature_importance_vis(model, X):
     }).sort_values(by='importance', ascending=False)
 
     plt.figure(figsize=(20, 9))
-    # FIX: use y='feature' instead of hue='feature' for proper bar chart
     sns.barplot(x='importance', y='feature', hue='feature', data=feat_df, palette='viridis', legend=False)
     plt.title("Feature Importance")
-    plt.show()
+    plt.savefig(f'app/model/evaluation/{model_name}_feature_importance.png')
 
 
-def visualize_predictions(data):
+def visualize_predictions(data, model_name):
     if 'amount' not in data.columns:
         print("Column 'amount' not available for visualization.")
         return
@@ -120,7 +116,7 @@ def visualize_predictions(data):
     plt.title("Predicted Fraud vs Legit Transactions")
     plt.xlabel("Transaction Index")
     plt.ylabel("Amount")
-    plt.show()
+    plt.savefig(f'app/model/evaluation/{model_name}_prediction_vis.png')
 
 
 # ================================================================= PREDICTION ================================================================

@@ -1,5 +1,6 @@
 import os
 import sys
+import mlflow
 import argparse
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
@@ -13,6 +14,9 @@ from app.model.model import (
     classification_report_vis,
     feature_importance_vis
 )
+
+mlflow.set_tracking_uri('http://localhost:5000') 
+mlflow.set_experiment('Fraud Detection - Training')
 
 # ======================================================================== ARGUMENT PARSING ================================================================
 
@@ -90,12 +94,12 @@ print("Training complete.")
 
 # =================================================================================== EVALUATION ========================================================================
 
-for y_pred, y_proba in zip(y_preds, y_probas):
-    classification_report_vis(y_test=y_test, y_pred=y_pred)
+for (name, params, model), y_pred, y_proba in zip(models, y_preds, y_probas):
+    classification_report_vis(y_test=y_test, y_pred=y_pred, model_name=name)
 
 for name, params, model in models:
     if hasattr(model, 'feature_importances_'):
-        feature_importance_vis(model=model, X=X_train)
+        feature_importance_vis(model=model, X=X_train, model_name=name)
     else:
         print(f"{name} does not support feature_importances_, skipping.")
 
