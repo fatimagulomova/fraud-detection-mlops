@@ -32,8 +32,11 @@ jobs:
           python-version: '3.10'
 
       # ── 3. Install dependencies ─────────────────────────────────────
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
 
       # ── 4. Determine which month to use ─────────────────────────────
       # If scheduled: derive month from current date
@@ -59,18 +62,16 @@ jobs:
           echo "month_file=$MONTH_FILE" >> $GITHUB_OUTPUT
           echo "Using data file: $MONTH_FILE"
 
-      - name: Start MLflow server
-        run: |
-          mlflow server --backend-store-uri sqlite:///mlflow.db --host 0.0.0.0 --port 5000 &
-          sleep 5
+      - name: Create output directories
+        run: mkdir -p evaluation app/model
 
       # ── 6. Run training on the monthly data file ─────────────────────
       - name: Run training
         env:
-          MLFLOW_TRACKING_URI: sqlite:///mlflow.db  
+          MLFLOW_TRACKING_URI: sqlite:///mlflow.db
+          MLFLOW_ALLOW_FILE_STORE: "false"
           MONTH_FILE: ${{ steps.drift.outputs.month_file }}
-        run: |
-          python train.py --data "$MONTH_FILE"
+        run: python train.py --data "$MONTH_FILE"
 
       # ── 7. Commit updated .pkl model files back to repo ──────────────
       - name: Commit new model files
