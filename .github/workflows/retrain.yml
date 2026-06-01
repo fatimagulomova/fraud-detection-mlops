@@ -66,7 +66,7 @@ jobs:
       - name: Run training
         env:
           MLFLOW_TRACKING_URI: sqlite:///mlflow.db
-          MLFLOW_ALLOW_FILE_STORE: "false"
+          MLFLOW_ALLOW_FILE_STORE: "true"
           MONTH_FILE: ${{ steps.drift.outputs.month_file }}
         run: python train.py --data "$MONTH_FILE"
 
